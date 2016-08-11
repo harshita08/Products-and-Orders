@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="productsApp">
+<head>
+	<title>Products and Orders</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers/product.js"></script>
+	<script src="js/controllers/order.js"></script>
+	<script src="js/factories/productServices.js"></script>
+</head>
+<body class="container">
+	<div ng-controller="productCtrl as PC">
+		<h2>Products</h2>
+		<form>
+			<p>Product Name: <input type="text" ng-model="PC.newProduct.name"></p>
+			<p>Product Price: <input type="text" ng-model="PC.newProduct.price"></p>
+			<input type="submit" value="Add Product" ng-click="PC.addProduct()">
+		</form>
+		<table>
+			<tr>
+				<th>S no.</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Actions</th>
+			</tr>
+			<tr ng-repeat = "prod in PC.allProducts">
+				<td>{{ $index+1 }}</td>
+				<td>{{ prod.name }}</td>
+				<td>{{ prod.price }}</td>
+				<td><button ng-click="PC.deleteProd($index)">Delete Product</button></td>
+			</tr>
+		</table>
+	</div>
+
+	<div ng-controller="orderCtrl as OC">
+		<h2>Orders</h2>
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Qty Available</th>
+				<th>Actions</th>
+			</tr>
+			<tr ng-repeat = "prod in OC.allProducts | orderBy: 'price' track by $index">
+				<td>{{ prod.name }}</td>
+				<td>{{ prod.price }}</td>
+				<td>{{ prod.quantity }}</td>
+				<td><button ng-click="OC.update($index)">Buy Product</button></td>
+			</tr>
+			
+		</table>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

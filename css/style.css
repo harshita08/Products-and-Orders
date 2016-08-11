@@ -1,0 +1,18 @@
+.container{
+	margin: 0 auto;
+	width: 970px;
+	min-height: 600px;
+	border: 1px solid black;
+	padding-left: 10px;
+}
+table {
+	border: 2px solid black;
+	width: 700px;
+	margin-top: 5px;
+}
+tr{
+	border: 1px dotted black;
+}
+td{
+	border: 1px dotted black;
+}
